@@ -1,0 +1,1066 @@
+/* ==============================================
+   CARTA INTERATIVA — Mateus & Bruna
+   4 Anos de Casamento
+   style.css
+   ============================================== */
+
+/* -----------------------------------------------
+   1. CUSTOM PROPERTIES (tokens de design)
+   ----------------------------------------------- */
+:root {
+  /* Paleta de cores */
+  --cor-fundo:       #F7F3EE;   /* off-white bege quente */
+  --cor-fundo-alt:   #EFE8DF;   /* bege um pouco mais escuro */
+  --cor-texto:       #2C2118;   /* marrom quase preto */
+  --cor-texto-suave: #6B5544;   /* marrom médio */
+  --cor-dourado:     #B8924A;   /* dourado cobre */
+  --cor-dourado-cl:  #D4AC6E;   /* dourado claro */
+  --cor-terracota:   #9B5E3B;   /* terracota */
+  --cor-branco:      #FDFAF6;   /* branco quente */
+  --cor-claro-text:  rgba(253,250,246,0.93);
+
+  /* Tipografia */
+  --fonte-display:   'Georgia', 'Times New Roman', serif;
+  --fonte-corpo:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Escala tipográfica */
+  --tam-xs:   0.75rem;
+  --tam-sm:   0.875rem;
+  --tam-base: 1rem;
+  --tam-md:   1.125rem;
+  --tam-lg:   1.375rem;
+  --tam-xl:   1.75rem;
+  --tam-2xl:  2.25rem;
+  --tam-3xl:  3rem;
+  --tam-4xl:  3.75rem;
+
+  /* Espaçamentos */
+  --espaco-xs:  0.5rem;
+  --espaco-sm:  1rem;
+  --espaco-md:  2rem;
+  --espaco-lg:  4rem;
+  --espaco-xl:  6rem;
+  --espaco-2xl: 10rem;
+
+  /* Transições */
+  --trans-suave: 0.7s ease;
+  --trans-rapida: 0.35s ease;
+
+  /* Sombras */
+  --sombra-suave: 0 4px 32px rgba(44,33,24,0.08);
+  --sombra-carta: 0 8px 60px rgba(44,33,24,0.14);
+}
+
+
+/* -----------------------------------------------
+   2. RESET E BASE
+   ----------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-corpo);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+
+/* -----------------------------------------------
+   3. ANIMAÇÕES DE ENTRADA (scroll reveal)
+   ----------------------------------------------- */
+
+/* Estado inicial — elementos ocultos antes de revelar */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--trans-suave), transform var(--trans-suave);
+}
+
+/* Estado visível após scroll */
+.reveal.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in para a capa */
+.fade-in {
+  animation: fadeIn 1.4s ease 0.3s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Frases sequenciais — estado inicial */
+.frase-seq,
+.frase-escolha {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.frase-seq.apareceu,
+.frase-escolha.apareceu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pergunta final da escolha */
+.escolha__pergunta {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.escolha__pergunta.apareceu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Aliança — segunda frase */
+.alianca__frase--2 {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.alianca__frase--2.apareceu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .frase-seq,
+  .frase-escolha,
+  .escolha__pergunta,
+  .alianca__frase--2,
+  .fade-in {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* -----------------------------------------------
+   4. ELEMENTOS COMPARTILHADOS
+   ----------------------------------------------- */
+
+/* Divisor decorativo dourado */
+.divisor {
+  width: 40px;
+  height: 1px;
+  background: var(--cor-dourado);
+  margin: var(--espaco-md) 0;
+}
+
+.divisor--claro {
+  background: rgba(253,250,246,0.5);
+  margin: var(--espaco-md) auto;
+}
+
+/* Número romano do capítulo */
+.capitulo__numero {
+  display: block;
+  font-family: var(--fonte-display);
+  font-size: var(--tam-xs);
+  letter-spacing: 0.3em;
+  color: var(--cor-dourado);
+  text-transform: uppercase;
+  margin-bottom: var(--espaco-sm);
+}
+
+.capitulo__numero--claro {
+  color: rgba(184,146,74,0.7);
+}
+
+
+/* -----------------------------------------------
+   5. CAPA
+   ----------------------------------------------- */
+.capa {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Imagem de fundo */
+.capa__bg {
+  position: absolute;
+  inset: 0;
+  will-change: transform; /* hint para parallax */
+}
+
+.capa__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Overlay gradiente — escurece base para legibilidade */
+.capa__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20,10,5,0.45) 0%,
+    rgba(20,10,5,0.55) 50%,
+    rgba(20,10,5,0.65) 100%
+  );
+}
+
+/* Conteúdo textual da capa */
+.capa__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--espaco-md);
+  max-width: 700px;
+}
+
+/* Linha decorativa acima do eyebrow */
+.capa__linha {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: var(--cor-dourado-cl);
+  margin: 0 auto var(--espaco-md);
+  opacity: 0.7;
+}
+
+.capa__eyebrow {
+  font-family: var(--fonte-corpo);
+  font-size: var(--tam-xs);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--cor-dourado-cl);
+  margin-bottom: var(--espaco-md);
+}
+
+.capa__titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-xl), 4vw, var(--tam-3xl));
+  font-weight: 400;
+  color: var(--cor-branco);
+  line-height: 1.4;
+  margin-bottom: var(--espaco-md);
+}
+
+.capa__titulo em {
+  font-style: italic;
+  color: var(--cor-dourado-cl);
+}
+
+.capa__aniversario {
+  font-family: var(--fonte-corpo);
+  font-size: var(--tam-sm);
+  letter-spacing: 0.2em;
+  color: rgba(253,250,246,0.6);
+  text-transform: uppercase;
+  margin-bottom: var(--espaco-lg);
+}
+
+/* Botão principal da capa */
+.btn-inicio {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid var(--cor-dourado-cl);
+  color: var(--cor-branco);
+  font-size: var(--tam-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: transparent;
+  transition: background var(--trans-rapida), color var(--trans-rapida);
+}
+
+.btn-inicio:hover,
+.btn-inicio:focus-visible {
+  background: var(--cor-dourado);
+  border-color: var(--cor-dourado);
+  color: var(--cor-texto);
+  outline: none;
+}
+
+/* Seta de scroll animada */
+.capa__scroll {
+  position: absolute;
+  bottom: var(--espaco-md);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid rgba(253,250,246,0.5);
+  border-bottom: 1px solid rgba(253,250,246,0.5);
+  transform: rotate(45deg);
+  animation: bounce 1.8s ease infinite;
+  margin: auto;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.6; }
+  50%       { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+
+
+/* -----------------------------------------------
+   6. SEÇÃO CAPÍTULO — estrutura base
+   ----------------------------------------------- */
+.capitulo {
+  padding: var(--espaco-xl) var(--espaco-md);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espaco-lg);
+  align-items: center;
+}
+
+/* Variante — imagem à direita (texto à esquerda) */
+.capitulo--imagem-direita {
+  direction: rtl; /* inverte ordem */
+}
+
+.capitulo--imagem-direita > * {
+  direction: ltr; /* restaura texto */
+}
+
+/* Imagem do capítulo */
+.capitulo__imagem-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.capitulo__imagem {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.8s ease;
+}
+
+.capitulo__imagem-wrap:hover .capitulo__imagem {
+  transform: scale(1.02);
+}
+
+/* Imagem grande (destaque Cecília) */
+.capitulo__imagem-wrap--grande .capitulo__imagem {
+  height: 560px;
+}
+
+/* Texto do capítulo */
+.capitulo__texto {
+  padding: var(--espaco-md) 0;
+}
+
+.capitulo__titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-lg), 2.5vw, var(--tam-2xl));
+  font-weight: 400;
+  color: var(--cor-texto);
+  line-height: 1.35;
+  margin-bottom: 0; /* divisor cria espaço */
+}
+
+.capitulo__paragrafo {
+  font-size: var(--tam-md);
+  color: var(--cor-texto-suave);
+  line-height: 1.85;
+  margin-bottom: var(--espaco-sm);
+}
+
+.capitulo__paragrafo--secundario {
+  font-size: var(--tam-base);
+  color: #9A8070;
+}
+
+.capitulo__paragrafo--destaque {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-xl);
+  font-style: italic;
+  color: var(--cor-terracota);
+}
+
+.capitulo__paragrafo--largo {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* -----------------------------------------------
+   7. CAPÍTULO FULLWIDTH (Paraná, Convite)
+   ----------------------------------------------- */
+.capitulo--fullwidth {
+  max-width: none;
+  grid-template-columns: 1fr;
+  padding: 0;
+  margin: var(--espaco-lg) 0;
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capitulo__fullbg {
+  position: absolute;
+  inset: 0;
+}
+
+.capitulo__fullbg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.capitulo__fullbg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20,10,5,0.42), rgba(20,10,5,0.60));
+}
+
+.capitulo__fullbg-overlay--escuro {
+  background: linear-gradient(to bottom, rgba(20,10,5,0.55), rgba(20,10,5,0.72));
+}
+
+/* Texto sobre fullwidth */
+.capitulo__texto--centrado {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: var(--espaco-xl) var(--espaco-md);
+  max-width: 700px;
+}
+
+.capitulo__texto--claro .capitulo__titulo,
+.capitulo__texto--claro .capitulo__paragrafo {
+  color: var(--cor-claro-text);
+}
+
+.capitulo__texto--claro .capitulo__numero {
+  color: var(--cor-dourado-cl);
+}
+
+
+/* -----------------------------------------------
+   8. CAPÍTULO DESAFIOS — frases sequenciais
+   ----------------------------------------------- */
+.frases-sequenciais {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-sm);
+}
+
+.frase-seq {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-lg);
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}
+
+.frase-seq--destaque {
+  font-size: var(--tam-xl);
+  color: var(--cor-terracota);
+  font-style: normal;
+  margin-top: var(--espaco-sm);
+}
+
+
+/* -----------------------------------------------
+   9. CAPÍTULO ALIANÇA — alto impacto
+   ----------------------------------------------- */
+.capitulo--alianca {
+  max-width: 900px;
+  background: var(--cor-fundo-alt);
+  margin: var(--espaco-lg) auto;
+  padding: var(--espaco-xl) var(--espaco-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espaco-xl);
+  align-items: center;
+}
+
+.alianca__imagem-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.alianca__imagem {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: saturate(0.7) brightness(1.05);
+  box-shadow: 0 0 0 1px var(--cor-dourado), var(--sombra-suave);
+}
+
+.alianca__texto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-lg);
+}
+
+.alianca__frase {
+  font-family: var(--fonte-display);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.alianca__frase--1 {
+  font-size: clamp(var(--tam-lg), 2.5vw, var(--tam-2xl));
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}
+
+.alianca__frase--2 {
+  font-size: clamp(var(--tam-2xl), 4vw, var(--tam-3xl));
+  color: var(--cor-terracota);
+  letter-spacing: -0.01em;
+}
+
+
+/* -----------------------------------------------
+   10. A CARTA
+   ----------------------------------------------- */
+.carta-section {
+  background: var(--cor-fundo);
+  padding: var(--espaco-xl) var(--espaco-md);
+  max-width: none;
+  margin: 0;
+}
+
+.carta-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.carta-header {
+  text-align: center;
+  margin-bottom: var(--espaco-xl);
+}
+
+.carta-header .capitulo__numero {
+  display: block;
+  text-align: center;
+}
+
+.carta-titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-lg), 2.5vw, var(--tam-2xl));
+  font-weight: 400;
+  color: var(--cor-texto);
+}
+
+.carta-header .divisor {
+  margin: var(--espaco-md) auto;
+}
+
+/* Papel da carta */
+.carta-papel {
+  background: var(--cor-branco);
+  padding: clamp(var(--espaco-lg), 6vw, var(--espaco-xl)) clamp(var(--espaco-md), 6vw, var(--espaco-lg));
+  box-shadow: var(--sombra-carta);
+  position: relative;
+  /* linha de margem esquerda estilo papel */
+  border-left: 3px solid var(--cor-fundo-alt);
+}
+
+/* Linha decorativa no topo da carta */
+.carta-papel::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--cor-dourado-cl), transparent);
+  margin-bottom: var(--espaco-lg);
+  opacity: 0.4;
+}
+
+.carta-abertura {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-xl);
+  font-style: italic;
+  color: var(--cor-texto);
+  margin-bottom: var(--espaco-lg);
+}
+
+.carta-paragrafo {
+  font-size: var(--tam-md);
+  color: var(--cor-texto-suave);
+  line-height: 2;
+  margin-bottom: var(--espaco-md);
+}
+
+.carta-fecho {
+  font-family: var(--fonte-display);
+  font-style: italic;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-md);
+  margin-top: var(--espaco-lg);
+  margin-bottom: var(--espaco-xs);
+}
+
+.carta-assinatura {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-xl);
+  font-style: italic;
+  color: var(--cor-terracota);
+}
+
+
+/* -----------------------------------------------
+   11. CAPÍTULO ESCOLHA
+   ----------------------------------------------- */
+.capitulo--escolha {
+  max-width: none;
+  grid-template-columns: 1fr;
+  padding: 0;
+  margin: var(--espaco-lg) 0;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.escolha__imagem-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.escolha__imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.escolha__imagem-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20,10,5,0.52), rgba(20,10,5,0.68));
+}
+
+.escolha__texto {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--espaco-xl) var(--espaco-md);
+  max-width: 600px;
+  width: 100%;
+}
+
+.frases-escolha {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-lg);
+}
+
+.frase-escolha {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-lg), 2.8vw, var(--tam-xl));
+  color: var(--cor-claro-text);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.escolha__pergunta {
+  padding-top: var(--espaco-md);
+}
+
+.escolha__pergunta .divisor {
+  margin: 0 auto var(--espaco-md);
+  background: rgba(184,146,74,0.5);
+}
+
+.escolha__pergunta-texto {
+  font-size: var(--tam-base);
+  color: rgba(253,250,246,0.7);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--espaco-sm);
+}
+
+.escolha__pergunta-principal {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-xl), 3.5vw, var(--tam-2xl));
+  color: var(--cor-branco);
+  font-style: italic;
+  margin-bottom: var(--espaco-lg);
+  line-height: 1.3;
+}
+
+/* Botão "Sim" */
+.btn-sim {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--cor-dourado);
+  color: var(--cor-branco);
+  font-size: var(--tam-base);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background var(--trans-rapida), transform var(--trans-rapida);
+}
+
+.btn-sim:hover,
+.btn-sim:focus-visible {
+  background: var(--cor-terracota);
+  transform: scale(1.03);
+  outline: none;
+}
+
+
+/* -----------------------------------------------
+   12. MENSAGEM FINAL (overlay após clicar em "Sim")
+   ----------------------------------------------- */
+.mensagem-final {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(20,10,5,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.mensagem-final.ativa {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mensagem-final__conteudo {
+  text-align: center;
+  padding: var(--espaco-lg) var(--espaco-md);
+  max-width: 520px;
+  transform: translateY(20px);
+  transition: transform 0.8s ease 0.2s;
+}
+
+.mensagem-final.ativa .mensagem-final__conteudo {
+  transform: translateY(0);
+}
+
+.mensagem-final__icone {
+  display: block;
+  font-size: var(--tam-xl);
+  color: var(--cor-dourado-cl);
+  margin-bottom: var(--espaco-md);
+  letter-spacing: 0.3em;
+  animation: girar 4s linear infinite;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.mensagem-final__titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-xl), 4vw, var(--tam-2xl));
+  font-weight: 400;
+  color: var(--cor-branco);
+  margin-bottom: var(--espaco-md);
+}
+
+.mensagem-final__texto {
+  font-size: var(--tam-md);
+  color: rgba(253,250,246,0.75);
+  line-height: 1.85;
+  margin-bottom: var(--espaco-sm);
+}
+
+.btn-continuar {
+  display: inline-block;
+  margin-top: var(--espaco-md);
+  padding: 12px 32px;
+  border: 1px solid rgba(184,146,74,0.5);
+  color: var(--cor-dourado-cl);
+  font-size: var(--tam-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background var(--trans-rapida), color var(--trans-rapida);
+}
+
+.btn-continuar:hover,
+.btn-continuar:focus-visible {
+  background: var(--cor-dourado);
+  border-color: var(--cor-dourado);
+  color: var(--cor-branco);
+  outline: none;
+}
+
+
+/* -----------------------------------------------
+   13. FINAL
+   ----------------------------------------------- */
+.capitulo--final {
+  max-width: none;
+  grid-template-columns: 1fr;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.final__imagem-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.final__imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.final__imagem-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,10,5,0.82) 0%, rgba(20,10,5,0.3) 60%, rgba(20,10,5,0.2) 100%);
+}
+
+.final__texto {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--espaco-xl) var(--espaco-md) var(--espaco-2xl);
+  max-width: 680px;
+  width: 100%;
+}
+
+.final__titulo {
+  font-family: var(--fonte-display);
+  font-size: clamp(var(--tam-xl), 3vw, var(--tam-2xl));
+  font-weight: 400;
+  color: var(--cor-branco);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.final__texto .divisor {
+  margin: var(--espaco-md) auto;
+  background: rgba(184,146,74,0.5);
+}
+
+.final__paragrafo {
+  font-size: var(--tam-lg);
+  color: rgba(253,250,246,0.8);
+  line-height: 1.85;
+}
+
+.final__paragrafo em {
+  color: var(--cor-dourado-cl);
+  font-style: italic;
+}
+
+
+/* -----------------------------------------------
+   14. RODAPÉ
+   ----------------------------------------------- */
+.rodape {
+  background: var(--cor-texto);
+  padding: var(--espaco-xl) var(--espaco-md);
+  text-align: center;
+}
+
+.rodape__inner {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.rodape__assinatura {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-base);
+  font-style: italic;
+  color: rgba(253,250,246,0.5);
+  margin-bottom: var(--espaco-xs);
+}
+
+.rodape__nome {
+  font-family: var(--fonte-display);
+  font-size: var(--tam-2xl);
+  font-style: italic;
+  color: var(--cor-dourado-cl);
+  margin-bottom: var(--espaco-md);
+}
+
+.rodape__linha {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: rgba(184,146,74,0.4);
+  margin: 0 auto var(--espaco-md);
+}
+
+.rodape__data {
+  font-size: var(--tam-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,0.3);
+}
+
+
+/* -----------------------------------------------
+   15. RESPONSIVIDADE — MOBILE (prioridade iPhone)
+   ----------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Capa */
+  .capa__titulo {
+    font-size: clamp(1.4rem, 5.5vw, 2rem);
+    line-height: 1.45;
+  }
+
+  .capa__linha {
+    height: 36px;
+  }
+
+  /* Capítulos em coluna única */
+  .capitulo {
+    grid-template-columns: 1fr;
+    padding: var(--espaco-lg) var(--espaco-sm);
+    gap: var(--espaco-md);
+  }
+
+  .capitulo--imagem-direita {
+    direction: ltr;
+  }
+
+  /* Imagens um pouco menores */
+  .capitulo__imagem {
+    height: 340px;
+  }
+
+  .capitulo__imagem-wrap--grande .capitulo__imagem {
+    height: 400px;
+  }
+
+  /* Aliança */
+  .capitulo--alianca {
+    grid-template-columns: 1fr;
+    padding: var(--espaco-lg) var(--espaco-md);
+    gap: var(--espaco-lg);
+    margin: var(--espaco-md) var(--espaco-sm);
+  }
+
+  .alianca__imagem {
+    width: 180px;
+    height: 180px;
+  }
+
+  .alianca__frase--2 {
+    font-size: var(--tam-2xl);
+  }
+
+  /* Carta */
+  .carta-papel {
+    padding: var(--espaco-md);
+  }
+
+  .carta-paragrafo {
+    font-size: var(--tam-base);
+    line-height: 1.9;
+  }
+
+  /* Fullwidth */
+  .capitulo--fullwidth,
+  .capitulo--escolha,
+  .capitulo--final {
+    min-height: 60vh;
+  }
+
+  /* Frases */
+  .frase-seq {
+    font-size: var(--tam-base);
+  }
+
+  .frase-seq--destaque {
+    font-size: var(--tam-lg);
+  }
+
+  /* Final */
+  .capitulo--final {
+    min-height: 80vh;
+  }
+
+  .final__texto {
+    padding-bottom: var(--espaco-xl);
+  }
+}
+
+@media (max-width: 420px) {
+  .capitulo {
+    padding: var(--espaco-md) var(--espaco-sm);
+  }
+
+  .capa__titulo {
+    font-size: 1.3rem;
+  }
+
+  .capitulo__titulo {
+    font-size: var(--tam-lg);
+  }
+
+  .carta-titulo {
+    font-size: var(--tam-lg);
+  }
+
+  .btn-inicio,
+  .btn-sim {
+    padding: 13px 28px;
+    font-size: var(--tam-xs);
+    letter-spacing: 0.12em;
+  }
+
+  .alianca__frase--1 {
+    font-size: var(--tam-md);
+  }
+}

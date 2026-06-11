@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Uma história de amor — Mateus & Bruna, 4 anos de casamento." />
+  <title>Mateus & Bruna — 4 Anos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       CAPÍTULO 1 — CAPA
+       ============================================= -->
+  <section id="capa" class="capa" role="banner" aria-label="Capa — Início da história">
+
+    <!-- Imagem de fundo com parallax suave via JS -->
+    <div class="capa__bg" aria-hidden="true">
+      <img src="./images/capa.jpg" alt="" class="capa__img" />
+      <div class="capa__overlay"></div>
+    </div>
+
+    <div class="capa__content fade-in">
+      <!-- Linha decorativa -->
+      <span class="capa__linha" aria-hidden="true"></span>
+
+      <p class="capa__eyebrow">Mateus &amp; Bruna</p>
+
+      <h1 class="capa__titulo">
+        Existem histórias que começam<br>com um encontro.<br>
+        <em>A nossa começou com uma escolha.</em>
+      </h1>
+
+      <p class="capa__aniversario">4 anos de casamento</p>
+
+      <!-- Botão de início -->
+      <button class="btn-inicio" id="btn-comecar" aria-label="Começar nossa história">
+        Começar nossa história
+      </button>
+    </div>
+
+    <!-- Seta de scroll -->
+    <div class="capa__scroll" aria-hidden="true">
+      <span class="scroll-arrow"></span>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 2 — O INÍCIO
+       ============================================= -->
+  <section id="inicio" class="capitulo capitulo--imagem-direita reveal" aria-label="O começo">
+
+    <div class="capitulo__imagem-wrap">
+      <img src="./images/inicio.jpg" alt="Mateus e Bruna no início do relacionamento" class="capitulo__imagem" loading="lazy" />
+    </div>
+
+    <div class="capitulo__texto">
+      <span class="capitulo__numero" aria-hidden="true">I</span>
+      <h2 class="capitulo__titulo">O começo</h2>
+      <div class="divisor" aria-hidden="true"></div>
+      <p class="capitulo__paragrafo">
+        Foi aqui que tudo começou.
+      </p>
+      <p class="capitulo__paragrafo capitulo__paragrafo--secundario">
+        Dois jovens que ainda não sabiam o quanto aquele momento mudaria tudo.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 3 — PARANÁ
+       ============================================= -->
+  <section id="parana" class="capitulo capitulo--fullwidth capitulo--parana reveal" aria-label="Quando escolhemos caminhar juntos">
+
+    <div class="capitulo__fullbg">
+      <img src="./images/parana.jpg" alt="Casal nas Cataratas do Iguaçu, Paraná" loading="lazy" />
+      <div class="capitulo__fullbg-overlay"></div>
+    </div>
+
+    <div class="capitulo__texto capitulo__texto--centrado capitulo__texto--claro">
+      <span class="capitulo__numero capitulo__numero--claro" aria-hidden="true">II</span>
+      <h2 class="capitulo__titulo">Quando escolhemos caminhar juntos</h2>
+      <div class="divisor divisor--claro" aria-hidden="true"></div>
+      <p class="capitulo__paragrafo">
+        Algumas decisões mudam um endereço.<br>
+        Outras mudam uma vida inteira.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 4 — CECÍLIA
+       ============================================= -->
+  <section id="cecilia" class="capitulo capitulo--destaque reveal" aria-label="Então Deus nos deu um presente">
+
+    <div class="capitulo__imagem-wrap capitulo__imagem-wrap--grande">
+      <img src="./images/cecilia.jpg" alt="Nascimento de Cecília — momento em família" class="capitulo__imagem" loading="lazy" />
+    </div>
+
+    <div class="capitulo__texto">
+      <span class="capitulo__numero" aria-hidden="true">III</span>
+      <h2 class="capitulo__titulo">Então Deus nos deu um presente</h2>
+      <div class="divisor" aria-hidden="true"></div>
+      <p class="capitulo__paragrafo capitulo__paragrafo--destaque">
+        Ela mudou tudo.
+      </p>
+      <p class="capitulo__paragrafo capitulo__paragrafo--secundario">
+        E nos mostrou que éramos capazes de amar de uma forma que ainda não conhecíamos.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 5 — DIAS DIFÍCEIS
+       ============================================= -->
+  <section id="desafios" class="capitulo capitulo--imagem-direita capitulo--desafios reveal" aria-label="Nem todos os capítulos foram fáceis">
+
+    <div class="capitulo__imagem-wrap">
+      <img src="./images/desafios.jpg" alt="Família reunida — momentos de superação" class="capitulo__imagem" loading="lazy" />
+    </div>
+
+    <div class="capitulo__texto">
+      <span class="capitulo__numero" aria-hidden="true">IV</span>
+      <h2 class="capitulo__titulo">Nem todos os capítulos foram fáceis</h2>
+      <div class="divisor" aria-hidden="true"></div>
+
+      <!-- Frases que aparecem sequencialmente via JS -->
+      <div class="frases-sequenciais" id="frases-desafios" role="list" aria-label="Momentos difíceis">
+        <p class="frase-seq" data-delay="0" aria-label="Nos cansamos">Nos cansamos.</p>
+        <p class="frase-seq" data-delay="400" aria-label="Nos frustramos">Nos frustramos.</p>
+        <p class="frase-seq" data-delay="800" aria-label="Nos machucamos">Nos machucamos.</p>
+        <p class="frase-seq frase-seq--destaque" data-delay="1400" aria-label="Mas nunca deixamos de ser nós">Mas nunca deixamos de ser nós.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 6 — A ALIANÇA
+       ============================================= -->
+  <section id="alianca" class="capitulo capitulo--alianca reveal" aria-label="A aliança que quebrou">
+
+    <div class="alianca__imagem-wrap">
+      <img src="./images/alianca.jpg" alt="Aliança de casamento" class="alianca__imagem" loading="lazy" />
+    </div>
+
+    <div class="alianca__texto">
+      <!-- Primeiro texto — visível -->
+      <p class="alianca__frase alianca__frase--1" id="alianca-frase1">
+        Um dia nossa aliança quebrou.
+      </p>
+
+      <!-- Segundo texto — aparece após pausa -->
+      <p class="alianca__frase alianca__frase--2" id="alianca-frase2" aria-hidden="true">
+        Mas nós não.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 7 — A CARTA
+       ============================================= -->
+  <section id="carta" class="carta-section reveal" aria-label="A carta de Mateus para Bruna">
+
+    <div class="carta-container">
+
+      <div class="carta-header">
+        <span class="capitulo__numero" aria-hidden="true">V</span>
+        <h2 class="carta-titulo">Uma carta para você</h2>
+        <div class="divisor" aria-hidden="true"></div>
+      </div>
+
+      <!-- O envelope / papel da carta -->
+      <article class="carta-papel" role="article" aria-label="Carta de aniversário">
+
+        <p class="carta-abertura">Meu amor,</p>
+
+        <p class="carta-paragrafo">
+          Quando nos casamos, eu acreditava que sabia o que significava amar alguém.
+        </p>
+
+        <p class="carta-paragrafo carta-paragrafo--enfase">
+          Hoje percebo que eu sabia apenas uma pequena parte.
+        </p>
+
+        <p class="carta-paragrafo">
+          Naquele dia, diante de Deus, da nossa família e dos nossos amigos, fiz promessas que nasceram de um amor sincero. Mas eu ainda não conhecia os desafios que a vida nos apresentaria, as renúncias que seriam necessárias, os medos que enfrentaríamos, nem as alegrias que transformariam completamente quem somos.
+        </p>
+
+        <p class="carta-paragrafo">
+          Eu não conhecia a versão de nós que existiria anos depois.
+        </p>
+
+        <!-- Bloco em lista poética — linhas curtas e impactantes -->
+        <div class="carta-bloco-poetico">
+          <p>Não conhecia a força que você carregava dentro de você.</p>
+          <p>Não conhecia a mulher que se tornaria mãe da nossa filha.</p>
+          <p>E certamente não conhecia o homem que eu precisaria me tornar.</p>
+        </div>
+
+        <p class="carta-paragrafo carta-paragrafo--secao">
+          Nossa história foi construída por escolhas.
+        </p>
+
+        <p class="carta-paragrafo">
+          Como por exemplo a escolha de decidir caminhar ao seu lado em uma mudança para o Paraná. Não foi um sacrifício. Foi uma decisão. Uma decisão de acreditar em você, acreditar em nós e acreditar que a nossa jornada sempre foi estarmos juntos.
+        </p>
+
+        <p class="carta-paragrafo">
+          Se eu pudesse voltar naqueles momentos, faria novamente.
+        </p>
+
+        <p class="carta-paragrafo carta-paragrafo--secao">
+          E então Deus nos presenteou com a Cecília.
+        </p>
+
+        <!-- Bloco Cecília -->
+        <div class="carta-bloco-poetico">
+          <p>A chegada dela mudou tudo.</p>
+          <p>Mudou nossos horários.</p>
+          <p>Mudou nossas prioridades.</p>
+          <p>Mudou nossa forma de enxergar o futuro.</p>
+          <p>Mudou até a forma como entendemos o amor.</p>
+          <p>Ela trouxe um amor que não sabíamos que existia.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Mas junto com esse presente vieram desafios que também não esperávamos.
+        </p>
+
+        <!-- Bloco desafios -->
+        <div class="carta-bloco-poetico carta-bloco-poetico--suave">
+          <p>Vieram noites mal dormidas.</p>
+          <p>Vieram preocupações.</p>
+          <p>Vieram cobranças.</p>
+          <p>Vieram momentos em que o cansaço falou mais alto que a paciência.</p>
+          <p>Momentos em que nos ferimos.</p>
+          <p>Momentos em que falhamos um com o outro.</p>
+          <p>Momentos em que esquecemos que estávamos do mesmo lado.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          E hoje eu não quero apagar essas partes da nossa história.
+        </p>
+
+        <p class="carta-paragrafo">
+          Porque elas também nos trouxeram até aqui.
+        </p>
+
+        <p class="carta-paragrafo">
+          Seria fácil contar apenas os capítulos felizes. Mas o amor verdadeiro não é construído apenas nos dias bons. Ele é provado nos dias difíceis. É fortalecido quando duas pessoas decidem permanecer mesmo quando seria mais fácil desistir.
+        </p>
+
+        <p class="carta-paragrafo carta-paragrafo--secao">
+          Por isso, quando penso neste momento que estamos vivendo, não o vejo como um recomeço.
+        </p>
+
+        <p class="carta-paragrafo carta-paragrafo--enfase">
+          Porque nossa história nunca acabou.
+        </p>
+
+        <!-- Bloco vírgula -->
+        <div class="carta-bloco-poetico">
+          <p>Eu vejo como uma vírgula.</p>
+          <p>Uma pausa.</p>
+          <p>Um momento para olhar para trás com gratidão e para frente com esperança.</p>
+          <p>Uma oportunidade para lembrar quem fomos, reconhecer quem somos e decidir juntos quem queremos nos tornar.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Hoje eu não faço novas promessas porque as antigas perderam o valor. Faço porque elas ganharam um significado muito maior.
+        </p>
+
+        <p class="carta-paragrafo carta-paragrafo--secao">
+          Hoje eu sei que amar não é apenas sentir.
+        </p>
+
+        <!-- Bloco escolha — clímax da carta -->
+        <div class="carta-bloco-poetico carta-bloco-poetico--destaque">
+          <p>É escolher.</p>
+          <p>Escolher permanecer.</p>
+          <p>Escolher perdoar.</p>
+          <p>Escolher servir.</p>
+          <p>Escolher recomeçar quantas vezes forem necessárias.</p>
+        </div>
+
+        <p class="carta-paragrafo carta-paragrafo--secao">
+          E diante de Deus, eu quero reafirmar minha escolha.
+        </p>
+
+        <!-- Bloco declaração final -->
+        <div class="carta-bloco-poetico carta-bloco-poetico--destaque">
+          <p>Escolho você.</p>
+          <p>Escolho nossa família.</p>
+          <p>Escolho nossa história.</p>
+          <p>Escolho continuar construindo uma vida ao seu lado.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Assumo o compromisso de viver de forma mais consciente, de ser o responsável pelo nosso lar.
+        </p>
+
+        <!-- Bloco identidade -->
+        <div class="carta-bloco-poetico carta-bloco-poetico--suave">
+          <p>Não um homem perfeito.</p>
+          <p>Não um homem que sempre terá todas as respostas.</p>
+          <p>Mas um homem que busca a Deus.</p>
+          <p>Um homem que ora por sua mulher.</p>
+          <p>Um homem que ora por sua filha.</p>
+          <p>Um homem que entende que seu papel é cuidar, servir e caminhar ao lado da sua família com amor e responsabilidade.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Que entende que amar é se entregar diariamente. Que entende que a família que construímos é um dos maiores presentes que Deus me confiou.
+        </p>
+
+        <!-- Bloco cicatrizes -->
+        <div class="carta-bloco-poetico">
+          <p>Voltamos com cicatrizes.</p>
+          <p>Com aprendizados.</p>
+          <p>Com erros.</p>
+          <p>Com vitórias.</p>
+          <p>Com memórias.</p>
+          <p>E, principalmente, com um amor muito mais profundo do que aquele que carregávamos antigamente.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Se naquele tempo eu te amava pela mulher que você era, hoje eu te amo também por tudo o que enfrentamos juntos.
+        </p>
+
+        <!-- Bloco gratidão -->
+        <div class="carta-bloco-poetico carta-bloco-poetico--suave">
+          <p>Por cada desafio.</p>
+          <p>Por cada conquista.</p>
+          <p>Por cada lágrima.</p>
+          <p>Por cada sorriso.</p>
+          <p>Por cada capítulo que escreveu nossa história.</p>
+        </div>
+
+        <p class="carta-paragrafo carta-paragrafo--enfase">
+          É por tudo isso que hoje eu quero apenas te dizer, mais uma vez, aquilo que talvez seja a maior verdade da minha vida: eu sou grato por caminhar ao seu lado.
+        </p>
+
+        <!-- Bloco grato final -->
+        <div class="carta-bloco-poetico">
+          <p>Grato pela mulher que você é.</p>
+          <p>Pela mãe extraordinária que se tornou.</p>
+          <p>Pela família que construímos juntos.</p>
+          <p>E por cada dia que ainda teremos pela frente.</p>
+        </div>
+
+        <p class="carta-paragrafo">
+          Se o passado me enche de gratidão, o futuro me enche de esperança, porque ele continua sendo ao seu lado.
+        </p>
+
+        <p class="carta-fecho">
+          Com amor,
+        </p>
+
+        <p class="carta-assinatura">Mateus</p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 8 — O CONVITE
+       ============================================= -->
+  <section id="convite" class="capitulo capitulo--fullwidth capitulo--convite reveal" aria-label="O convite especial">
+
+    <div class="capitulo__fullbg">
+      <img src="./images/hotel.jpg" alt="Local da lua de mel" loading="lazy" />
+      <div class="capitulo__fullbg-overlay capitulo__fullbg-overlay--escuro"></div>
+    </div>
+
+    <div class="capitulo__texto capitulo__texto--centrado capitulo__texto--claro">
+      <span class="capitulo__numero capitulo__numero--claro" aria-hidden="true">VI</span>
+      <h2 class="capitulo__titulo">Existe algo que eu gostaria de fazer com você.</h2>
+      <div class="divisor divisor--claro" aria-hidden="true"></div>
+      <p class="capitulo__paragrafo capitulo__paragrafo--largo">
+        Gostaria de voltar para onde começamos nossa lua de mel.<br>
+        Mas desta vez levando tudo aquilo que construímos desde então.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       CAPÍTULO 9 — A ESCOLHA
+       ============================================= -->
+  <section id="escolha" class="capitulo capitulo--escolha reveal" aria-label="A escolha">
+
+    <div class="escolha__imagem-wrap">
+      <img src="./images/escolha.jpg" alt="Casal juntos — a escolha de continuar" class="escolha__imagem" loading="lazy" />
+      <div class="escolha__imagem-overlay"></div>
+    </div>
+
+    <div class="escolha__texto">
+
+      <!-- Frases que aparecem sequencialmente -->
+      <div class="frases-escolha" id="frases-escolha" role="list">
+        <p class="frase-escolha" data-delay="0">Nossa aliança quebrou.</p>
+        <p class="frase-escolha frase-escolha--tachado" data-delay="0" aria-hidden="true"><!-- decorativo --></p>
+        <p class="frase-escolha" data-delay="300">Nosso casamento não.</p>
+        <p class="frase-escolha" data-delay="600">Nossa família não.</p>
+        <p class="frase-escolha" data-delay="900">Nossa história não.</p>
+      </div>
+
+      <div class="escolha__pergunta" id="escolha-pergunta" aria-live="polite">
+        <div class="divisor" aria-hidden="true"></div>
+        <p class="escolha__pergunta-texto">
+          Por isso quero te fazer uma pergunta.
+        </p>
+        <p class="escolha__pergunta-principal">
+          Você aceita escolher uma nova aliança comigo?
+        </p>
+        <!-- Botão de resposta -->
+        <button class="btn-sim" id="btn-sim" aria-label="Sim, aceito escolher uma nova aliança?">
+          Sim ❤
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       MENSAGEM FINAL — após clicar em "Sim"
+       ============================================= -->
+  <div class="mensagem-final" id="mensagem-final" aria-live="assertive" aria-hidden="true" role="dialog" aria-label="Mensagem especial">
+    <div class="mensagem-final__conteudo">
+      <span class="mensagem-final__icone" aria-hidden="true">◇</span>
+      <h2 class="mensagem-final__titulo">Sabia que você ia dizer sim.</h2>
+      <p class="mensagem-final__texto">
+        Porque você sempre soube dizer sim para o que importa.<br>
+        Para nós. Para a Cecília. Para a nossa vida.
+      </p>
+      <p class="mensagem-final__texto">
+        Te amo mais do que palavras conseguem explicar.
+      </p>
+      <button class="btn-continuar" id="btn-continuar" aria-label="Continuar para o final">
+        Continuar
+      </button>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       CAPÍTULO 10 — FINAL
+       ============================================= -->
+  <section id="final" class="capitulo capitulo--final reveal" aria-label="O final — e o começo de tudo de novo">
+
+    <div class="final__imagem-wrap">
+      <img src="./images/familia.jpg" alt="A família — Mateus, Bruna e Cecília" class="final__imagem" loading="lazy" />
+      <div class="final__imagem-overlay"></div>
+    </div>
+
+    <div class="final__texto">
+      <span class="capitulo__numero" aria-hidden="true">VII</span>
+      <h2 class="final__titulo">Obrigado por continuar caminhando ao meu lado.</h2>
+      <div class="divisor" aria-hidden="true"></div>
+      <p class="final__paragrafo">
+        Se eu pudesse voltar no tempo, escolheria você novamente.<br>
+        <em>E novamente. E novamente.</em>
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- =============================================
+       RODAPÉ
+       ============================================= -->
+  <footer class="rodape" role="contentinfo">
+    <div class="rodape__inner">
+      <p class="rodape__assinatura">Com amor,</p>
+      <p class="rodape__nome">Mateus</p>
+      <span class="rodape__linha" aria-hidden="true"></span>
+      <p class="rodape__data">11 de junho de 2022 — 11 de junho de 2026</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
